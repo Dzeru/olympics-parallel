@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns:=http://www.w3.org/1999/xhtml>
+<head>
+    {{> meta}}
+    <title>Olympics Parallel</title>
+</head>
+<body>
+<section>
+    {{> menu}}
+    <div class="p-1 text-center">
+        <h3>Info about dataset</h3>
+        <p>Dataset size: <strong>{{#csvStatsSize}}{{csvStatsSize}}{{/csvStatsSize}}</strong></p>
+        <p>Dataset header: {{#csvStatsData}}{{csvStatsData}}{{/csvStatsData}}</p>
+        <p>Dataset example row: {{#csvStatsExampleRow}}{{csvStatsExampleRow}}{{/csvStatsExampleRow}}</p>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Column name</th>
+                <th scope="col">Dummy</th>
+                <th scope="col">CompletableFuture</th>
+                <th scope="col">Callable</th>
+                <th scope="col">Executor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-info">
+                <th scope="row">Timer millis</th>
+                <td>{{#dummyAllStatsServiceStats}}{{dummyAllStatsServiceStats.timerMillis}}{{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}{{completableFutureAllStatsServiceStats.timerMillis}}{{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}{{callableAllStatsServiceStats.timerMillis}}{{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}{{executorAllStatsServiceStats.timerMillis}}{{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Most medals by country</th>
+                <td>{{#dummyAllStatsServiceStats}}Country: {{dummyAllStatsServiceStats.mostMedalsByCountry.country}}<br>
+                    G: {{dummyAllStatsServiceStats.mostMedalsByCountry.goldMedals}}<br>
+                    S: {{dummyAllStatsServiceStats.mostMedalsByCountry.silverMedals}}<br>
+                    B: {{dummyAllStatsServiceStats.mostMedalsByCountry.bronzeMedals}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.mostMedalsByCountry.country}}<br>
+                    G: {{completableFutureAllStatsServiceStats.mostMedalsByCountry.goldMedals}}<br>
+                    S: {{completableFutureAllStatsServiceStats.mostMedalsByCountry.silverMedals}}<br>
+                    B: {{completableFutureAllStatsServiceStats.mostMedalsByCountry.bronzeMedals}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.mostMedalsByCountry.country}}<br>
+                    G: {{callableAllStatsServiceStats.mostMedalsByCountry.goldMedals}}<br>
+                    S: {{callableAllStatsServiceStats.mostMedalsByCountry.silverMedals}}<br>
+                    B: {{callableAllStatsServiceStats.mostMedalsByCountry.bronzeMedals}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.mostMedalsByCountry.country}}<br>
+                    G: {{executorAllStatsServiceStats.mostMedalsByCountry.goldMedals}}<br>
+                    S: {{executorAllStatsServiceStats.mostMedalsByCountry.silverMedals}}<br>
+                    B: {{executorAllStatsServiceStats.mostMedalsByCountry.bronzeMedals}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Least medals by country</th>
+                <td>{{#dummyAllStatsServiceStats}}Country: {{dummyAllStatsServiceStats.leastMedalsByCountry.country}}<br>
+                    G: {{dummyAllStatsServiceStats.leastMedalsByCountry.goldMedals}}<br>
+                    S: {{dummyAllStatsServiceStats.leastMedalsByCountry.silverMedals}}<br>
+                    B: {{dummyAllStatsServiceStats.leastMedalsByCountry.bronzeMedals}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.leastMedalsByCountry.country}}<br>
+                    G: {{completableFutureAllStatsServiceStats.leastMedalsByCountry.goldMedals}}<br>
+                    S: {{completableFutureAllStatsServiceStats.leastMedalsByCountry.silverMedals}}<br>
+                    B: {{completableFutureAllStatsServiceStats.leastMedalsByCountry.bronzeMedals}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.leastMedalsByCountry.country}}<br>
+                    G: {{callableAllStatsServiceStats.leastMedalsByCountry.goldMedals}}<br>
+                    S: {{callableAllStatsServiceStats.leastMedalsByCountry.silverMedals}}<br>
+                    B: {{callableAllStatsServiceStats.leastMedalsByCountry.bronzeMedals}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.leastMedalsByCountry.country}}<br>
+                    G: {{executorAllStatsServiceStats.leastMedalsByCountry.goldMedals}}<br>
+                    S: {{executorAllStatsServiceStats.leastMedalsByCountry.silverMedals}}<br>
+                    B: {{executorAllStatsServiceStats.leastMedalsByCountry.bronzeMedals}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Mean medals by country</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: -<br>
+                    G: {{dummyAllStatsServiceStats.meanMedalsByCountry.goldMedals}}<br>
+                    S: {{dummyAllStatsServiceStats.meanMedalsByCountry.silverMedals}}<br>
+                    B: {{dummyAllStatsServiceStats.meanMedalsByCountry.bronzeMedals}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: -<br>
+                    G: {{completableFutureAllStatsServiceStats.meanMedalsByCountry.goldMedals}}<br>
+                    S: {{completableFutureAllStatsServiceStats.meanMedalsByCountry.silverMedals}}<br>
+                    B: {{completableFutureAllStatsServiceStats.meanMedalsByCountry.bronzeMedals}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: -<br>
+                    G: {{callableAllStatsServiceStats.meanMedalsByCountry.goldMedals}}<br>
+                    S: {{callableAllStatsServiceStats.meanMedalsByCountry.silverMedals}}<br>
+                    B: {{callableAllStatsServiceStats.meanMedalsByCountry.bronzeMedals}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: -<br>
+                    G: {{executorAllStatsServiceStats.meanMedalsByCountry.goldMedals}}<br>
+                    S: {{executorAllStatsServiceStats.meanMedalsByCountry.silverMedals}}<br>
+                    B: {{executorAllStatsServiceStats.meanMedalsByCountry.bronzeMedals}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Most medals by sportsman all</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Sportsman: {{dummyAllStatsServiceStats.mostMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{dummyAllStatsServiceStats.mostMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{dummyAllStatsServiceStats.mostMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{dummyAllStatsServiceStats.mostMedalsBySportsmanAll.bronzeMedals}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Sportsman: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanAll.bronzeMedals}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Sportsman: {{callableAllStatsServiceStats.mostMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{callableAllStatsServiceStats.mostMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{callableAllStatsServiceStats.mostMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{callableAllStatsServiceStats.mostMedalsBySportsmanAll.bronzeMedals}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Sportsman: {{executorAllStatsServiceStats.mostMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{executorAllStatsServiceStats.mostMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{executorAllStatsServiceStats.mostMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{executorAllStatsServiceStats.mostMedalsBySportsmanAll.bronzeMedals}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Least medals by sportsman all</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Sportsman: {{dummyAllStatsServiceStats.leastMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{dummyAllStatsServiceStats.leastMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{dummyAllStatsServiceStats.leastMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{dummyAllStatsServiceStats.leastMedalsBySportsmanAll.bronzeMedals}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Sportsman: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanAll.bronzeMedals}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Sportsman: {{callableAllStatsServiceStats.leastMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{callableAllStatsServiceStats.leastMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{callableAllStatsServiceStats.leastMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{callableAllStatsServiceStats.leastMedalsBySportsmanAll.bronzeMedals}}
+                {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Sportsman: {{executorAllStatsServiceStats.leastMedalsBySportsmanAll.sportsman}}<br>
+                    G: {{executorAllStatsServiceStats.leastMedalsBySportsmanAll.goldMedals}}<br>
+                    S: {{executorAllStatsServiceStats.leastMedalsBySportsmanAll.silverMedals}}<br>
+                    B: {{executorAllStatsServiceStats.leastMedalsBySportsmanAll.bronzeMedals}}
+                {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Most medals by sportsman by medal type</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    G: {{dummyAllStatsServiceStats.mostMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{dummyAllStatsServiceStats.mostMedalsBySportsmanByMedalType.silverMedals.sportsman}}
+                    <br>B: {{dummyAllStatsServiceStats.mostMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    G: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanByMedalType.silverMedals.sportsman}}
+                    <br>B: {{completableFutureAllStatsServiceStats.mostMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    G: {{callableAllStatsServiceStats.mostMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{callableAllStatsServiceStats.mostMedalsBySportsmanByMedalType.silverMedals.sportsman}}<br>
+                    B: {{callableAllStatsServiceStats.mostMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    G: {{executorAllStatsServiceStats.mostMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{executorAllStatsServiceStats.mostMedalsBySportsmanByMedalType.silverMedals.sportsman}}<br>
+                    B: {{executorAllStatsServiceStats.mostMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Least medals by sportsman by medal type</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    G: {{dummyAllStatsServiceStats.leastMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{dummyAllStatsServiceStats.leastMedalsBySportsmanByMedalType.silverMedals.sportsman}}<br>
+                    B: {{dummyAllStatsServiceStats.leastMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    G: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanByMedalType.silverMedals.sportsman}}<br>
+                    B: {{completableFutureAllStatsServiceStats.leastMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    G: {{callableAllStatsServiceStats.leastMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{callableAllStatsServiceStats.leastMedalsBySportsmanByMedalType.silverMedals.sportsman}}<br>
+                    B: {{callableAllStatsServiceStats.leastMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    G: {{executorAllStatsServiceStats.leastMedalsBySportsmanByMedalType.goldMedals.sportsman}}<br>
+                    S: {{executorAllStatsServiceStats.leastMedalsBySportsmanByMedalType.silverMedals.sportsman}}<br>
+                    B: {{executorAllStatsServiceStats.leastMedalsBySportsmanByMedalType.bronzeMedals.sportsman}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Most popular countries all</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: {{dummyAllStatsServiceStats.mostPopularCountriesAll.country}}<br>
+                    Olympics: {{dummyAllStatsServiceStats.mostPopularCountriesAll.olympics}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.mostPopularCountriesAll.country}}<br>
+                    Olympics: {{completableFutureAllStatsServiceStats.mostPopularCountriesAll.olympics}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.mostPopularCountriesAll.country}}<br>
+                    Olympics: {{callableAllStatsServiceStats.mostPopularCountriesAll.olympics}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.mostPopularCountriesAll.country}}<br>
+                    Olympics: {{executorAllStatsServiceStats.mostPopularCountriesAll.olympics}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Least popular countries all</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: {{dummyAllStatsServiceStats.leastPopularCountriesAll.country}}<br>
+                    Olympics: {{dummyAllStatsServiceStats.leastPopularCountriesAll.olympics}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.leastPopularCountriesAll.country}}<br>
+                    Olympics: {{completableFutureAllStatsServiceStats.leastPopularCountriesAll.olympics}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.leastPopularCountriesAll.country}}<br>
+                    Olympics: {{callableAllStatsServiceStats.leastPopularCountriesAll.olympics}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.leastPopularCountriesAll.country}}<br>
+                    Olympics: {{executorAllStatsServiceStats.leastPopularCountriesAll.olympics}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Most popular countries by sport</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: {{dummyAllStatsServiceStats.mostPopularCountriesBySport.country}}<br>
+                    Sport: {{dummyAllStatsServiceStats.mostPopularCountriesBySport.sport}}<br>
+                    Olympics: {{dummyAllStatsServiceStats.mostPopularCountriesBySport.olympics}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.mostPopularCountriesBySport.country}}<br>
+                    Sport: {{completableFutureAllStatsServiceStats.mostPopularCountriesBySport.sport}}<br>
+                    Olympics: {{completableFutureAllStatsServiceStats.mostPopularCountriesBySport.olympics}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.mostPopularCountriesBySport.country}}<br>
+                    Sport: {{callableAllStatsServiceStats.mostPopularCountriesBySport.sport}}<br>
+                    Olympics: {{callableAllStatsServiceStats.mostPopularCountriesBySport.olympics}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.mostPopularCountriesBySport.country}}<br>
+                    Sport: {{executorAllStatsServiceStats.mostPopularCountriesBySport.sport}}<br>
+                    Olympics: {{executorAllStatsServiceStats.mostPopularCountriesBySport.olympics}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Least popular countries by sport</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: {{dummyAllStatsServiceStats.leastPopularCountriesBySport.country}}<br>
+                    Sport: {{dummyAllStatsServiceStats.leastPopularCountriesBySport.sport}}<br>
+                    Olympics: {{dummyAllStatsServiceStats.leastPopularCountriesBySport.olympics}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.leastPopularCountriesBySport.country}}<br>
+                    Sport: {{completableFutureAllStatsServiceStats.leastPopularCountriesBySport.sport}}<br>
+                    Olympics: {{completableFutureAllStatsServiceStats.leastPopularCountriesBySport.olympics}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.leastPopularCountriesBySport.country}}<br>
+                    Sport: {{callableAllStatsServiceStats.leastPopularCountriesBySport.sport}}<br>
+                    Olympics: {{callableAllStatsServiceStats.leastPopularCountriesBySport.olympics}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.leastPopularCountriesBySport.country}}<br>
+                    Sport: {{executorAllStatsServiceStats.leastPopularCountriesBySport.sport}}<br>
+                    Olympics: {{executorAllStatsServiceStats.leastPopularCountriesBySport.olympics}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Most popular countries by discipline</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: {{dummyAllStatsServiceStats.mostPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{dummyAllStatsServiceStats.mostPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{dummyAllStatsServiceStats.mostPopularCountriesByDiscipline.olympics}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.mostPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{completableFutureAllStatsServiceStats.mostPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{completableFutureAllStatsServiceStats.mostPopularCountriesByDiscipline.olympics}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.mostPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{callableAllStatsServiceStats.mostPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{callableAllStatsServiceStats.mostPopularCountriesByDiscipline.olympics}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.mostPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{executorAllStatsServiceStats.mostPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{executorAllStatsServiceStats.mostPopularCountriesByDiscipline.olympics}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Least popular countries by discipline</th>
+                <td>{{#dummyAllStatsServiceStats}}
+                    Country: {{dummyAllStatsServiceStats.leastPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{dummyAllStatsServiceStats.leastPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{dummyAllStatsServiceStats.leastPopularCountriesByDiscipline.olympics}}
+                    {{/dummyAllStatsServiceStats}}</td>
+                <td>{{#completableFutureAllStatsServiceStats}}
+                    Country: {{completableFutureAllStatsServiceStats.leastPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{completableFutureAllStatsServiceStats.leastPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{completableFutureAllStatsServiceStats.leastPopularCountriesByDiscipline.olympics}}
+                    {{/completableFutureAllStatsServiceStats}}</td>
+                <td>{{#callableAllStatsServiceStats}}
+                    Country: {{callableAllStatsServiceStats.leastPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{callableAllStatsServiceStats.leastPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{callableAllStatsServiceStats.leastPopularCountriesByDiscipline.olympics}}
+                    {{/callableAllStatsServiceStats}}</td>
+                <td>{{#executorAllStatsServiceStats}}
+                    Country: {{executorAllStatsServiceStats.leastPopularCountriesByDiscipline.country}}<br>
+                    Discipline: {{executorAllStatsServiceStats.leastPopularCountriesByDiscipline.sport}}<br>
+                    Olympics: {{executorAllStatsServiceStats.leastPopularCountriesByDiscipline.olympics}}
+                    {{/executorAllStatsServiceStats}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
