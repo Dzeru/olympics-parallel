@@ -1,12 +1,10 @@
 package com.dzeru.olympicsparallel.service;
 
+import com.dzeru.olympicsparallel.model.SignUpModel;
 import com.dzeru.olympicsparallel.model.User;
 import com.dzeru.olympicsparallel.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,13 +24,17 @@ public class SignUpService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Map<String, Object> signUp(User user, String repeatPassword) {
-        var username = user.getUsername();
-        var password = user.getPassword();
-        log.info("Start sign up process for user " + username);
+    public Map<String, Object> signUp(SignUpModel signUpModel) {
         Map<String, Object> model = new HashMap<>();
+        var username = signUpModel.getUsername();
+        var password = signUpModel.getPassword();
+        if (username == null || username.isEmpty()) {
+            model.put("error", "Username is empty!");
+            return model;
+        }
+        log.info("Start sign up process for user " + username);
 
-        if (!user.getPassword().equals(repeatPassword)) {
+        if (!password.equals(signUpModel.getRepeatPassword())) {
             model.put("error", "Passwords are not equal!");
         } else {
             User userFromDB = userRepository.findByUsername(username);
@@ -43,12 +45,9 @@ public class SignUpService {
             if (password.length() < 4) {
                 model.put("error", "Password is too short!");
             }
-            if (username == null || username.isEmpty()) {
-                model.put("error", "Username is empty!");
-            }
 
             if (model.isEmpty()) {
-                user.setPassword(passwordEncoder.encode(password));
+                User user = new User(username, passwordEncoder.encode(password));
                 userRepository.save(user);
             }
             log.info("Finish sign up process for user " + username);

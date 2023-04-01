@@ -1,6 +1,6 @@
 package com.dzeru.olympicsparallel.controller;
 
-import com.dzeru.olympicsparallel.model.User;
+import com.dzeru.olympicsparallel.model.SignUpModel;
 import com.dzeru.olympicsparallel.service.SignUpService;
 import com.dzeru.olympicsparallel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -30,8 +29,8 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signup(User user, @RequestParam String repeatPassword, Model model) {
-        Map<String, Object> modelSignUp = signUpService.signUp(user, repeatPassword);
+    public String signup(SignUpModel signUpModel, Model model) {
+        Map<String, Object> modelSignUp = signUpService.signUp(signUpModel);
 
         if (modelSignUp.isEmpty()) {
             return "redirect:/login";
